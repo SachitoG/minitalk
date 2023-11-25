@@ -6,7 +6,7 @@
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:36 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/25 19:39:32 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:42:14 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	send_char(char c, int pid)
 		else
 			kill(pid, SIGUSR2);
 		i++;
-		usleep(50);
+		usleep(100);
 	}
 }
 
