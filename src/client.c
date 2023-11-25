@@ -6,7 +6,7 @@
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:36 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/25 19:42:14 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:39:31 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ int	main(int argc, char *argv[])
 		ft_printf("be positive and greater than 0\n");
 		return (0);
 	}
-	send_str(argv[2], pid);
-	send_char('\n', pid);
+	for (int i = 0; i < 100; i++)
+	{
+		send_str(argv[2], pid);
+		send_char('\n', pid);
+	}
 	return (0);
 }
