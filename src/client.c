@@ -6,7 +6,7 @@
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:36 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/25 18:53:43 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:39:32 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int	main(int argc, char *argv[])
 	pid = ft_atoi(argv[1]);
 	if (pid == 0)
 	{
-		ft_printf("PID invalid. PID must only contain digits and be positive.\n");
+		ft_printf("PID invalid. PID must only contain digits, ");
+		ft_printf("be positive and greater than 0\n");
 		return (0);
 	}
 	send_str(argv[2], pid);
