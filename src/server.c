@@ -6,7 +6,7 @@
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:46 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/25 17:59:25 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:46:34 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	finish(int signum)
 {
 	if (signum == SIGINT)
 	{
-		ft_printf("\033[0;31m\n[server closed]\n\033[0m");
+		ft_printf("\033[0;31m\n[SERVER CLOSED]\n\033[0m");
 		exit(0);
 	}
 }
@@ -44,8 +44,8 @@ int	main(void)
 {
 	struct sigaction	sa;
 
-	ft_printf("\033[0;32m[server started]\n\033[0m");
-	ft_printf("\033[0;36m[pid : %d]\n\033[0m", getpid());
+	ft_printf("\033[0;32m[SERVER STARTED]\n\033[0m");
+	ft_printf("\033[0;36m[PID: %d]\n\033[0m", getpid());
 	sa.sa_handler = my_handler;
 	sa.sa_flags = SA_RESTART;
 	if (sigaction(SIGUSR1, &sa, 0) == -1 || sigaction(SIGUSR2, &sa, 0) == -1)
