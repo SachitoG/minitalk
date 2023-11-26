@@ -6,7 +6,7 @@
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:46 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/26 15:49:08 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:18:07 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	my_handler(int signum, siginfo_t *info, void *content)
 	static int	i;
 	static char	c;
 
-	(void)info;
 	(void)content;
 	if (signum == SIGUSR1)
 		c |= (1 << i);
