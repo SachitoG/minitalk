@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:46 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/26 15:49:02 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:49:08 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,23 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 
-void	my_handler(int signum)
+void	my_handler(int signum, siginfo_t *info, void *content)
 {
 	static int	i;
 	static char	c;
 
+	(void)info;
+	(void)content;
 	if (signum == SIGUSR1)
 		c |= (1 << i);
 	i++;
 	if (i > 7)
 	{
 		if (c == '\0')
+		{
 			write(1, "\n", 1);
+			kill(info->si_pid, SIGUSR1);
+		}
 		else
 			write(1, &c, 1);
 		i = 0;
@@ -48,8 +53,9 @@ void	init_sa(struct sigaction *sa)
 	sigemptyset(&sa->sa_mask);
 	sigaddset(&sa->sa_mask, SIGUSR1);
 	sigaddset(&sa->sa_mask, SIGUSR2);
-	sa->sa_handler = my_handler;
-	sa->sa_flags = 0;
+	sa->sa_handler = 0;
+	sa->sa_flags = SA_SIGINFO;
+	sa->sa_sigaction = &my_handler;
 }
 
 int	main(void)

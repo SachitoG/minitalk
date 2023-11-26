@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:36 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/26 15:48:19 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:48:53 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "ft_printf.h"
 
 int	ft_atoi(const char *str)
@@ -64,6 +65,15 @@ void	send_str(char *str, int pid)
 	send_char('\0', pid);
 }
 
+void	my_handler(int signum)
+{
+	if (signum == SIGUSR1)
+	{
+		ft_printf("\033[0;32mMessage delivered!\n\033[0m");
+		exit(0);
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	int	pid;
@@ -81,6 +91,9 @@ int	main(int argc, char *argv[])
 		ft_printf("be positive and greater than 0\n");
 		return (1);
 	}
+	signal(SIGUSR1, my_handler);
 	send_str(argv[2], pid);
-	return (0);
+	sleep(1);
+	ft_printf("\033[0;31mMessage not delivered\n\033[0m");
+	return (1);
 }
