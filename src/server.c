@@ -6,7 +6,7 @@
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:46 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/26 15:49:02 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:42:21 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	finish(int signum)
 {
 	if (signum == SIGINT)
 	{
-		ft_printf("\033[0;31m\n[SERVER CLOSED]\n\033[0m");
+		ft_printf("\033[0;31m\r[SERVER STOPPED]\n\033[0m");
 		exit(0);
 	}
 }

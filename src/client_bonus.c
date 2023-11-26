@@ -6,7 +6,7 @@
 /*   By: ssenas-y <ssenas-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:57:36 by ssenas-y          #+#    #+#             */
-/*   Updated: 2023/11/26 15:48:53 by ssenas-y         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:21:30 by ssenas-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int argc, char *argv[])
 	}
 	signal(SIGUSR1, my_handler);
 	send_str(argv[2], pid);
-	sleep(1);
+	usleep(100);
 	ft_printf("\033[0;31mMessage not delivered\n\033[0m");
 	return (1);
 }
